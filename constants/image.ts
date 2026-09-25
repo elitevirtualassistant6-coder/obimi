@@ -28,8 +28,7 @@ import event10 from '../public/assets/events/event-o.jpg';
 import event11 from '../public/assets/events/event-p.jpg';
 import event12 from '../public/assets/events/event-q.jpg';
 import event13 from '../public/assets/events/event-r.jpg';
-import gathering4 from '../public/assets/events/gathering-4.jpg';
-import gathering4b from '../public/assets/events/gathering-4b.jpg';
+import event14 from '../public/assets/events/event-f.jpg';
 import gathering5 from '../public/assets/events/gathering-5.jpg';
 import gathering6 from '../public/assets/events/gathering-6.jpg';
 import gathering7 from '../public/assets/events/gathering-7.jpg';
@@ -49,6 +48,7 @@ import magazine3 from '../public/assets/magazine/cover3.jpeg';
 // product images
 import bag from '../public/assets/shop/bag.jpg';
 import bag1 from '../public/assets/shop/bag1.jpg';
+import digitalPack from '../public/assets/shop/digital-pack.png';
 import parentGuide from '../public/assets/shop/parent-guide.png';
 import tshirtBlack from '../public/assets/shop/tshirt-black.png';
 import tshirtPurple from '../public/assets/shop/tshirt-purple.png';
@@ -67,7 +67,7 @@ export const IMAGES = {
   EVENT_C: event3,
   EVENT_D: event4,
   EVENT_E: event5,
-  EVENT_F: gathering4,
+  EVENT_F: event14,
   EVENT_G: gathering5,
   EVENT_H: gathering6,
   EVENT_I: gathering7,
@@ -80,7 +80,6 @@ export const IMAGES = {
   EVENT_P: event11,
   EVENT_Q: event12,
   EVENT_R: event13,
-  EVENT_S: gathering4b,
   MISSION: mission,
   AWARD: award,
   MAGAZINE: magazine,
@@ -89,6 +88,7 @@ export const IMAGES = {
   BAG: bag,
   BAG_1: bag1,
   PARENT_GUIDE: parentGuide,
+  DIGITAL_PACK: digitalPack,
   TSHIRT_YELLOW: tshirtYellow,
   TSHIRT_PURPLE: tshirtPurple,
   TSHIRT_BLACK: tshirtBlack,

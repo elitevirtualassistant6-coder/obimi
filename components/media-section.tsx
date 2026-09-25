@@ -4,7 +4,12 @@ import { ExternalLink, Image as ImageIcon, Play, Video, X } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
 import { useState } from 'react';
 
-const images: { src: StaticImageData | string; alt: string; span: string }[] = [
+const images: {
+  src: StaticImageData | string;
+  alt: string;
+  span: string;
+  position?: string;
+}[] = [
   {
     src: IMAGES.EVENT_A,
     alt: 'Community Event 1',
@@ -16,12 +21,13 @@ const images: { src: StaticImageData | string; alt: string; span: string }[] = [
     span: 'md:col-span-1 md:row-span-1',
   },
   {
-    src: IMAGES.EVENT_C,
+    src: IMAGES.EVENT_D,
     alt: 'Community Event 3',
     span: 'md:col-span-1 md:row-span-1',
+    position: 'object-top',
   },
   {
-    src: IMAGES.EVENT_D,
+    src: IMAGES.EVENT_C,
     alt: 'Community Event 4',
     span: 'md:col-span-2 md:row-span-1',
   },
@@ -119,7 +125,7 @@ const MediaSection = () => {
             <h3 className='text-2xl font-heading font-bold'>Photo Gallery</h3>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]'>
+          <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[260px]'>
             {images.map((img, index) => (
               <div
                 key={index}
@@ -132,14 +138,14 @@ const MediaSection = () => {
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-110'
+                    className={`w-full h-full object-cover ${img.position ?? ''} transition-transform duration-700 group-hover:scale-110`}
                   />
                 ) : (
                   <Image
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className='object-cover transition-transform duration-700 group-hover:scale-110'
+                    className={`object-cover ${img.position ?? ''} transition-transform duration-700 group-hover:scale-110`}
                   />
                 )}
                 <div className='absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center'>

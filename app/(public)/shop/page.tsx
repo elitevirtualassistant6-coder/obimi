@@ -49,7 +49,7 @@ export default function ShopMainPage() {
       id: 'digital-pack',
       name: 'Digital Resource Pack',
       desc: 'Instant access to templates, checklists, and guides.',
-      image: IMAGES.PARENT_GUIDE,
+      image: IMAGES.DIGITAL_PACK,
       tag: 'Digital',
     },
   ];

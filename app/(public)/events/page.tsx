@@ -116,11 +116,6 @@ const COMMUNITY_GALLERIES = [
         alt: 'Gathering 16',
         title: 'Community Gathering',
       },
-      {
-        src: IMAGES.EVENT_S.src,
-        alt: 'Gathering 17',
-        title: 'Community Gathering',
-      },
     ],
   },
 ];
