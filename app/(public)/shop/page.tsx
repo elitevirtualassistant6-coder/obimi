@@ -28,16 +28,14 @@ export default function ShopMainPage() {
       id: 'parent-guide',
       name: 'The Obimi Parent Guide (2026 Edition)',
       desc: 'Practical advice and clear guidance for navigating the SEND journey.',
-      image:
-        'https://blackwomenrisinguk.org/wp-content/uploads/2025/06/04-BWR-Tshirt.png',
+      image: IMAGES.PARENT_GUIDE,
       tag: 'Essential',
     },
     {
       id: 'awareness-tshirt',
       name: 'Obimi Awareness T-Shirt',
       desc: 'Wear your support and help us spread awareness for SEND families.',
-      image:
-        'https://blackwomenrisinguk.org/wp-content/uploads/2025/06/04-BWR-Tshirt.png',
+      image: IMAGES.TSHIRT_YELLOW,
       tag: 'Community',
     },
     {
@@ -51,8 +49,7 @@ export default function ShopMainPage() {
       id: 'digital-pack',
       name: 'Digital Resource Pack',
       desc: 'Instant access to templates, checklists, and guides.',
-      image:
-        'https://blackwomenrisinguk.org/wp-content/uploads/2025/06/04-BWR-Tshirt.png',
+      image: IMAGES.PARENT_GUIDE,
       tag: 'Digital',
     },
   ];
@@ -184,12 +181,12 @@ export default function ShopMainPage() {
       <section className='max-w-[1440px] mx-auto px-6 md:px-12 mb-32'>
         <div className='relative bg-background rounded-[4rem] p-12 md:p-24 overflow-hidden border border-gray-100'>
           {/* Decorative background text */}
-          <div
+          {/* <div
             data-aos='fade-down'
             className='absolute -top-10 -right-10 text-[12rem] font-bold text-accent select-none pointer-events-none font-heading'
           >
             IMPACT
-          </div>
+          </div> */}
 
           <div className='grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10'>
             <div className='lg:col-span-5'>

@@ -30,7 +30,7 @@ const ServicesPage = () => {
       cta: 'Book a Session',
       icon: <UserCircle className='w-10 h-10 text-primary' />,
       color: 'bg-primary/5 border-primary/20',
-      image: IMAGES.EVENT_F,
+      image: IMAGES.EVENT_F.src,
     },
     {
       id: 'workshops',
@@ -69,7 +69,7 @@ const ServicesPage = () => {
       cta: 'Join the Community',
       icon: <Users className='w-10 h-10 text-brand-deep' />,
       color: 'bg-brand-deep/5 border-brand-deep/10',
-      image: IMAGES.EVENT_J,
+      image: IMAGES.EVENT_J.src,
     },
   ];
 

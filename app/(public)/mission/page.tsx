@@ -7,6 +7,7 @@ import {
   Sparkles,
   Users,
 } from 'lucide-react';
+import { IMAGES } from '@/constants/image';
 import { useRouter } from 'next/navigation';
 
 const MissionPage = () => {
@@ -87,7 +88,7 @@ const MissionPage = () => {
               className='aspect-square rounded-[4rem] overflow-hidden shadow-2xl border-8 border-background rotate-3 hover:rotate-0 transition-transform duration-500'
             >
               <img
-                src='https://obimi.org/wp-content/uploads/2025/09/Picz1.jpg'
+                src={IMAGES.MISSION.src}
                 alt='Supportive Community'
                 className='w-full h-full object-cover'
               />

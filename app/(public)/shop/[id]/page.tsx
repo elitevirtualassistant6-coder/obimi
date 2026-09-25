@@ -12,6 +12,7 @@ import {
   Sparkles,
   Truck,
 } from 'lucide-react';
+import { IMAGES } from '@/constants/image';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -40,8 +41,7 @@ export default function Page({ params }: Props) {
       'Delivery may take 1–2 weeks',
       'One per order (to reach more families)',
     ],
-    image:
-      'https://blackwomenrisinguk.org/wp-content/uploads/2025/06/04-BWR-Tshirt.png',
+    image: IMAGES.PARENT_GUIDE,
   };
 
   return (

@@ -52,27 +52,27 @@ const COMMUNITY_GALLERIES = [
         title: 'Community Gathering',
       },
       {
-        src: IMAGES.EVENT_F,
+        src: IMAGES.EVENT_F.src,
         alt: 'Gathering 4',
         title: 'Community Gathering',
       },
       {
-        src: IMAGES.EVENT_G,
+        src: IMAGES.EVENT_G.src,
         alt: 'Gathering 5',
         title: 'Community Gathering',
       },
       {
-        src: IMAGES.EVENT_H,
+        src: IMAGES.EVENT_H.src,
         alt: 'Gathering 6',
         title: 'Community Gathering',
       },
       {
-        src: IMAGES.EVENT_I,
+        src: IMAGES.EVENT_I.src,
         alt: 'Gathering 7',
         title: 'Community Gathering',
       },
       {
-        src: IMAGES.EVENT_J,
+        src: IMAGES.EVENT_J.src,
         alt: 'Gathering 8',
         title: 'Community Gathering',
       },
@@ -114,6 +114,11 @@ const COMMUNITY_GALLERIES = [
       {
         src: IMAGES.EVENT_R.src,
         alt: 'Gathering 16',
+        title: 'Community Gathering',
+      },
+      {
+        src: IMAGES.EVENT_S.src,
+        alt: 'Gathering 17',
         title: 'Community Gathering',
       },
     ],
