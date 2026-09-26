@@ -1,5 +1,6 @@
 import { Hero } from '@/components/hero';
 import HowWeHelp from '@/components/how-we-help';
+import { ImpactSection } from '@/components/impact-section';
 import KnowledgeHub from '@/components/knowledge-hub';
 import MediaSection from '@/components/media-section';
 import { NewsletterSignup } from '@/components/newsletter-signup';
@@ -17,6 +18,7 @@ export default function Home() {
   return (
     <main className='min-h-screen bg-background'>
       <Hero />
+      <ImpactSection />
       <HowWeHelp />
       <WhyObimi />
       <MediaSection />

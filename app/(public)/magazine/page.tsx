@@ -13,8 +13,25 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+
+const ARTICLE_PAGES = [
+  {
+    src: IMAGES.ARTICLE_1,
+    alt: 'Article Page 1',
+    caption: 'Article Page 1: The Mission',
+  },
+  {
+    src: IMAGES.ARTICLE_2,
+    alt: 'Article Page 2',
+    caption: 'Article Page 2: Community Impact',
+  },
+];
 
 export default function MagazineDetailPage() {
+  const [pageIndex, setPageIndex] = useState(0);
+  const page = ARTICLE_PAGES[pageIndex];
+
   return (
     <div className='bg-background min-h-screen pt-32 pb-24'>
       {/* Breadcrumbs & Back Button */}
@@ -99,36 +116,49 @@ export default function MagazineDetailPage() {
             </p>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-12'>
-            <div className='space-y-8'>
-              <div className='relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-lg border border-gray-200 bg-white p-4'>
-                <div className='relative w-full h-full rounded-xl overflow-hidden'>
-                  <Image
-                    src={IMAGES.MAGAZINE_2}
-                    alt='Article Page 1'
-                    fill
-                    className='object-cover'
-                  />
-                </div>
+          <div className='max-w-2xl mx-auto'>
+            <div className='relative aspect-[5/7] rounded-[2rem] overflow-hidden shadow-lg border border-gray-200 bg-white p-4'>
+              <div className='relative w-full h-full rounded-xl overflow-hidden'>
+                <Image
+                  key={page.src.src}
+                  src={page.src}
+                  alt={page.alt}
+                  fill
+                  sizes='(min-width: 768px) 672px, 100vw'
+                  className='object-contain animate-in fade-in duration-500'
+                />
               </div>
-              <p className='text-center text-gray-500 font-medium italic'>
-                {'Article Page 1: The Mission'}
-              </p>
             </div>
-            <div className='space-y-8'>
-              <div className='relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-lg border border-gray-200 bg-white p-4'>
-                <div className='relative w-full h-full rounded-xl overflow-hidden'>
-                  <Image
-                    src={IMAGES.MAGAZINE_3}
-                    alt='Article Page 2'
-                    fill
-                    className='object-cover'
-                  />
-                </div>
-              </div>
-              <p className='text-center text-gray-500 font-medium italic'>
-                Article Page 2: Community Impact
-              </p>
+
+            <p
+              aria-live='polite'
+              className='mt-8 text-center text-gray-500 font-medium italic'
+            >
+              {page.caption}
+            </p>
+
+            <div className='mt-8 flex items-center justify-center gap-6'>
+              <button
+                type='button'
+                onClick={() => setPageIndex((i) => i - 1)}
+                disabled={pageIndex === 0}
+                aria-label='Previous page'
+                className='cursor-pointer p-4 rounded-full bg-brand-deep text-white shadow-lg transition-all hover:-translate-x-1 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-x-0'
+              >
+                <ArrowLeft className='w-5 h-5' />
+              </button>
+              <span className='font-bold text-brand-deep tabular-nums'>
+                {pageIndex + 1} / {ARTICLE_PAGES.length}
+              </span>
+              <button
+                type='button'
+                onClick={() => setPageIndex((i) => i + 1)}
+                disabled={pageIndex === ARTICLE_PAGES.length - 1}
+                aria-label='Next page'
+                className='cursor-pointer p-4 rounded-full bg-brand-deep text-white shadow-lg transition-all hover:translate-x-1 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-x-0'
+              >
+                <ArrowRight className='w-5 h-5' />
+              </button>
             </div>
           </div>
         </div>

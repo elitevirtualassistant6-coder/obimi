@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Shop | Obimi',
+  title: 'Shop',
   description: 'Support Obimi and spread awareness with our range of products.',
 };
 

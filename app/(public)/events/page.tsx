@@ -299,7 +299,7 @@ export default function Events() {
       </section>
 
       {/* ==================== UPCOMING EVENTS SECTION ==================== */}
-      <section className='py-20 md:py-28 px-4 bg-background'>
+      {/* <section className='py-20 md:py-28 px-4 bg-background'>
         <div className='max-w-2xl mx-auto'>
           <h2
             data-aos='fade-down'
@@ -335,10 +335,10 @@ export default function Events() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ==================== FEATURED EVENTS SECTION ==================== */}
-      <section className='py-20 md:py-28 px-4 bg-muted'>
+      {/* <section className='py-20 md:py-28 px-4 bg-muted'>
         <div className='max-w-6xl mx-auto'>
           <div className='mb-16 text-center animate-fade-in-up'>
             <h2
@@ -378,7 +378,7 @@ export default function Events() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ==================== COMMUNITY MOMENTS SECTION ==================== */}
       <section className='py-20 md:py-28 px-4 bg-background'>

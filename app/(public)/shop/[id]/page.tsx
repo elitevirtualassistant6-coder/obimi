@@ -1,5 +1,3 @@
-'use client';
-
 import {
   ArrowLeft,
   ArrowRight,
@@ -12,37 +10,34 @@ import {
   Sparkles,
   Truck,
 } from 'lucide-react';
-import { IMAGES } from '@/constants/image';
+import { getProduct, PRODUCT_NOTES, PRODUCTS } from '@/constants/products';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-export default function Page({ params }: Props) {
-  const product = {
-    title: 'The Obimi Parent Guide (2026 Edition)',
-    price: 'Free (Delivery fee applies)',
-    description:
-      'This guide was created for parents and caregivers navigating the SEND journey. Inside, you’ll find practical advice, real-life experiences, and clear guidance to help you understand your child’s needs and advocate with confidence.',
-    longDescription:
-      "Whether you're just starting or already deep in the process, this guide is designed to support you every step of the way. We believe that every parent deserves access to high-quality, practical information that makes their journey easier.",
-    inside: [
-      'Understanding SEND systems',
-      'Navigating education, health & care',
-      'Real stories from parents',
-      'Practical tools and templates',
-    ],
-    notes: [
-      'Limited copies available',
-      'Delivery may take 1–2 weeks',
-      'One per order (to reach more families)',
-    ],
-    image: IMAGES.PARENT_GUIDE,
+export function generateStaticParams() {
+  return PRODUCTS.map((product) => ({ id: product.id }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const product = getProduct((await params).id);
+  if (!product) return {};
+  return {
+    title: `${product.name} | Shop | Obimi`,
+    description: product.description,
   };
+}
+
+export default async function Page({ params }: Props) {
+  const product = getProduct((await params).id);
+  if (!product) notFound();
 
   return (
     <div className='bg-white min-h-screen pt-32 pb-24'>
@@ -65,7 +60,7 @@ export default function Page({ params }: Props) {
             <div className='relative aspect-[4/5] rounded-[3rem] overflow-hidden bg-gray-50 border border-gray-100 shadow-sm group'>
               <Image
                 src={product.image}
-                alt={product.title}
+                alt={product.name}
                 fill
                 className='object-cover group-hover:scale-105 transition-transform duration-700'
               />
@@ -79,69 +74,82 @@ export default function Page({ params }: Props) {
           <div className='lg:col-span-6 flex flex-col justify-center'>
             <div data-aos='fade-down' className='inline-flex items-center gap-2 px-4 py-2 text-brand-deep text-sm font-bold mb-6'>
               <Sparkles className='w-4 h-4' />
-              <span>2026 Edition</span>
+              <span>{product.tag}</span>
             </div>
             <h1 data-aos='fade-right' className='text-4xl md:text-6xl font-bold font-heading text-brand-deep mb-6 leading-tight'>
-              {product.title}
+              {product.name}
             </h1>
-            <p data-aos='fade-up' data-aos-delay='200' className='text-3xl font-bold text-brand-deep mb-8'>
-              {product.price}
-            </p>
+            {product.price && (
+              <p data-aos='fade-up' data-aos-delay='200' className='text-3xl font-bold text-brand-deep mb-8'>
+                {product.price}
+              </p>
+            )}
 
             <div data-aos='fade-up' data-aos-delay='300' className='prose prose-lg max-w-none text-gray-600 leading-relaxed mb-10'>
               <p className='text-xl font-medium text-brand-deep mb-4'>
                 {product.description}
               </p>
-              <p>{product.longDescription}</p>
+              {product.longDescription && <p>{product.longDescription}</p>}
             </div>
 
             {/* What's Inside */}
-            <div data-aos='fade-up' data-aos-delay='400' className='mb-12'>
-              <h3 className='text-xl font-bold font-heading text-brand-deep mb-6 flex items-center gap-2'>
-                <Package className='w-5 h-5 text-brand-deep' />
-                What’s Inside:
-              </h3>
-              <ul className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                {product.inside.map((item, i) => (
-                  <li
-                    key={i}
-                    data-aos='fade-up'
-                    data-aos-delay={500 + i * 100}
-                    className='flex items-center gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-100'
-                  >
-                    <CheckCircle2 className='w-5 h-5 text-brand-deep flex-shrink-0' />
-                    <span className='font-medium text-gray-700'>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {product.inside && (
+              <div data-aos='fade-up' data-aos-delay='400' className='mb-12'>
+                <h3 className='text-xl font-bold font-heading text-brand-deep mb-6 flex items-center gap-2'>
+                  <Package className='w-5 h-5 text-brand-deep' />
+                  What’s Inside:
+                </h3>
+                <ul className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                  {product.inside.map((item, i) => (
+                    <li
+                      key={i}
+                      data-aos='fade-up'
+                      data-aos-delay={500 + i * 100}
+                      className='flex items-center gap-3 p-4 bg-gray-50 rounded-2xl border border-gray-100'
+                    >
+                      <CheckCircle2 className='w-5 h-5 text-brand-deep flex-shrink-0' />
+                      <span className='font-medium text-gray-700'>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Important Notes */}
-            <div data-aos='zoom-in' data-aos-delay='600' className='mb-12 p-6 bg-brand-yellow/10 rounded-[2rem] border border-brand-yellow/20'>
-              <h3 className='text-lg font-bold font-heading text-brand-deep mb-4 flex items-center gap-2'>
-                <Info className='w-5 h-5 text-brand-yellow-dark' />
-                Important Notes:
-              </h3>
-              <ul className='space-y-2'>
-                {product.notes.map((note, i) => (
-                  <li
-                    key={i}
-                    className='flex items-center gap-2 text-sm text-brand-deep/70 font-medium'
-                  >
-                    <div className='w-1.5 h-1.5 rounded-full bg-brand-yellow-dark' />
-                    <span>{note}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {PRODUCT_NOTES.length > 0 && (
+              <div data-aos='zoom-in' data-aos-delay='600' className='mb-12 p-6 bg-brand-yellow/10 rounded-[2rem] border border-brand-yellow/20'>
+                <h3 className='text-lg font-bold font-heading text-brand-deep mb-4 flex items-center gap-2'>
+                  <Info className='w-5 h-5 text-brand-yellow-dark' />
+                  Important Notes:
+                </h3>
+                <ul className='space-y-2'>
+                  {PRODUCT_NOTES.map((note, i) => (
+                    <li
+                      key={i}
+                      className='flex items-center gap-2 text-sm text-brand-deep/70 font-medium'
+                    >
+                      <div className='w-1.5 h-1.5 rounded-full bg-brand-yellow-dark' />
+                      <span>{note}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Actions */}
             <div data-aos='fade-up' data-aos-delay='700' className='flex flex-col gap-4'>
-              <button className='w-full py-6 bg-brand-deep text-white font-bold rounded-full hover:bg-brand-deep transition-all flex items-center justify-center gap-3 group shadow-xl shadow-brand-deep/10'>
+              <Link
+                href={product.paymentUrl ?? '/contact'}
+                {...(product.paymentUrl && {
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                })}
+                className='w-full py-6 bg-brand-deep text-white font-bold rounded-full hover:bg-brand-deep transition-all flex items-center justify-center gap-3 group shadow-xl shadow-brand-deep/10'
+              >
                 <ShoppingBag className='w-6 h-6' />
-                <span>Get Your Copy</span>
+                <span>{product.cta ?? 'Order Now'}</span>
                 <ArrowRight className='w-5 h-5 group-hover:translate-x-1 transition-transform' />
-              </button>
+              </Link>
 
               {/* Donation Option */}
               <div data-aos='fade-up' data-aos-delay='800' className='p-8 bg-brand-deep/5 rounded-[2.5rem] border border-brand-deep/10 mt-4'>
@@ -176,7 +184,7 @@ export default function Page({ params }: Props) {
               Safe Delivery
             </h4>
             <p className='text-gray-500'>
-              We ensure your guide reaches you safely and securely.
+              We ensure your order reaches you safely and securely.
             </p>
           </div>
           <div data-aos='fade-up' data-aos-delay='100' className='p-10 bg-gray-50 rounded-[3rem] border border-gray-100 text-center'>

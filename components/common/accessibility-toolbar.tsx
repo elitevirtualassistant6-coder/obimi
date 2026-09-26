@@ -3,10 +3,10 @@
 import { Button } from '@/components/ui/button';
 import { useAccessibility } from '@/context/accessibility-context';
 import {
-  Accessibility,
   Heading,
   Link as LinkIcon,
   Minus,
+  PersonStanding,
   Plus,
   RotateCcw,
   Sun,
@@ -104,7 +104,7 @@ export function AccessibilityToolbar() {
         aria-label='Open accessibility toolbar'
         aria-expanded={isOpen}
       >
-        <Accessibility
+        <PersonStanding
           className={`w-7 h-7 transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
@@ -122,7 +122,7 @@ export function AccessibilityToolbar() {
         <div className='bg-background text-foreground p-6 flex items-center justify-between'>
           <div className='flex items-center gap-3'>
             <div className='p-2 bg-accent/20 rounded-full'>
-              <Accessibility className='w-5 h-5' />
+              <PersonStanding className='w-5 h-5' />
             </div>
             <div>
               <h2 className='font-heading font-bold text-lg'>Accessibility</h2>

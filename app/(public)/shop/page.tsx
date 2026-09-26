@@ -1,6 +1,6 @@
 'use client';
 
-import { IMAGES } from '@/constants/image';
+import { PRODUCTS } from '@/constants/products';
 import {
   ArrowRight,
   CheckCircle2,
@@ -21,39 +21,8 @@ export default function ShopMainPage() {
     router.push('/contact');
   };
   const donate = () => {
-    router.push('https://www.paypal.com/ncp/payment/MQG6ZVX59QCSY');
+    router.push('https://www.paypal.com/ncp/payment/6YU47UP22DE6N');
   };
-  const products = [
-    {
-      id: 'parent-guide',
-      name: 'The Obimi Parent Guide (2026 Edition)',
-      desc: 'Practical advice and clear guidance for navigating the SEND journey.',
-      image: IMAGES.PARENT_GUIDE,
-      tag: 'Essential',
-    },
-    {
-      id: 'awareness-tshirt',
-      name: 'Obimi Awareness T-Shirt',
-      desc: 'Wear your support and help us spread awareness for SEND families.',
-      image: IMAGES.TSHIRT_YELLOW,
-      tag: 'Community',
-    },
-    {
-      id: 'tote-bag',
-      name: 'Obimi Tote Bag',
-      desc: 'A durable, eco-friendly bag for your everyday essentials.',
-      image: IMAGES.BAG,
-      tag: 'Eco-friendly',
-    },
-    {
-      id: 'digital-pack',
-      name: 'Digital Resource Pack',
-      desc: 'Instant access to templates, checklists, and guides.',
-      image: IMAGES.DIGITAL_PACK,
-      tag: 'Digital',
-    },
-  ];
-
   const impactPoints = [
     {
       icon: <Globe className='w-8 h-8' />,
@@ -143,8 +112,8 @@ export default function ShopMainPage() {
           </h2>
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-          {products.map((product, idx) => (
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {PRODUCTS.map((product, idx) => (
             <Link
               key={product.id}
               href={`/shop/${product.id}`}
@@ -169,8 +138,13 @@ export default function ShopMainPage() {
                   {product.name}
                 </h3>
                 <p className='text-gray-500 text-sm mb-4 line-clamp-2'>
-                  {product.desc}
+                  {product.summary}
                 </p>
+                {/* {product.price && (
+                  <p className='text-lg font-bold text-brand-deep'>
+                    {product.price}
+                  </p>
+                )} */}
               </div>
             </Link>
           ))}

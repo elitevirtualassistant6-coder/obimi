@@ -44,12 +44,15 @@ import award from '../public/assets/images/award.png';
 import magazine from '../public/assets/magazine/cover1.png';
 import magazine2 from '../public/assets/magazine/cover2.png';
 import magazine3 from '../public/assets/magazine/cover3.jpeg';
+import article1 from '../public/assets/magazine/article-1.jpeg';
+import article2 from '../public/assets/magazine/article-2.jpeg';
 
 // product images
 import bag from '../public/assets/shop/bag.jpg';
 import bag1 from '../public/assets/shop/bag1.jpg';
 import digitalPack from '../public/assets/shop/digital-pack.png';
-import parentGuide from '../public/assets/shop/parent-guide.png';
+import pipChecklist from '../public/assets/shop/pip-checklist.png';
+import sensoryTent from '../public/assets/shop/sensory-tent.png';
 import tshirtBlack from '../public/assets/shop/tshirt-black.png';
 import tshirtPurple from '../public/assets/shop/tshirt-purple.png';
 import tshirtYellow from '../public/assets/shop/tshirt-yellow.png';
@@ -85,9 +88,12 @@ export const IMAGES = {
   MAGAZINE: magazine,
   MAGAZINE_2: magazine2,
   MAGAZINE_3: magazine3,
+  ARTICLE_1: article1,
+  ARTICLE_2: article2,
   BAG: bag,
   BAG_1: bag1,
-  PARENT_GUIDE: parentGuide,
+  PIP_CHECKLIST: pipChecklist,
+  SENSORY_TENT: sensoryTent,
   DIGITAL_PACK: digitalPack,
   TSHIRT_YELLOW: tshirtYellow,
   TSHIRT_PURPLE: tshirtPurple,
