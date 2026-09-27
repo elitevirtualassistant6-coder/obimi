@@ -11,27 +11,115 @@ import {
   MapPin,
   Share2,
 } from 'lucide-react';
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const ARTICLE_PAGES = [
+type ArticlePage = {
+  src: StaticImageData;
+  alt: string;
+  caption: string;
+};
+
+const LIFE_IN_PAGES: ArticlePage[] = [
   {
-    src: IMAGES.ARTICLE_1,
-    alt: 'Article Page 1',
+    src: IMAGES.MAGAZINE_2,
+    alt: 'Life In Orpington article page 1',
     caption: 'Article Page 1: The Mission',
   },
   {
-    src: IMAGES.ARTICLE_2,
-    alt: 'Article Page 2',
+    src: IMAGES.MAGAZINE_3,
+    alt: 'Life In Orpington article page 2',
     caption: 'Article Page 2: Community Impact',
   },
 ];
 
-export default function MagazineDetailPage() {
-  const [pageIndex, setPageIndex] = useState(0);
-  const page = ARTICLE_PAGES[pageIndex];
+const ENABLE_PAGES: ArticlePage[] = [
+  {
+    src: IMAGES.ARTICLE_1,
+    alt: 'Enable magazine article page 1',
+    caption: 'Article Page 1: Taking the Initiative',
+  },
+  {
+    src: IMAGES.ARTICLE_2,
+    alt: 'Enable magazine article page 2',
+    caption: 'Article Page 2: We Are the Pillars',
+  },
+];
 
+function ArticleViewer({
+  title,
+  description,
+  pages,
+}: {
+  title: string;
+  description: string;
+  pages: ArticlePage[];
+}) {
+  const [pageIndex, setPageIndex] = useState(0);
+  const page = pages[pageIndex];
+
+  return (
+    <section className='max-w-[1440px] mx-auto px-6 md:px-12 mb-32'>
+      <div className='bg-gray-50 rounded-[4rem] p-12 md:p-24 border border-gray-100'>
+        <div className='max-w-4xl mx-auto mb-16 text-center'>
+          <h2 className='text-3xl md:text-4xl font-bold font-heading text-brand-deep mb-6'>
+            {title}
+          </h2>
+          <p className='text-lg text-gray-500'>{description}</p>
+        </div>
+
+        <div className='max-w-2xl mx-auto'>
+          <div className='relative aspect-[5/7] rounded-[2rem] overflow-hidden shadow-lg border border-gray-200 bg-white p-4'>
+            <div className='relative w-full h-full rounded-xl overflow-hidden'>
+              <Image
+                key={page.src.src}
+                src={page.src}
+                alt={page.alt}
+                fill
+                sizes='(min-width: 768px) 672px, 100vw'
+                className='object-contain animate-in fade-in duration-500'
+              />
+            </div>
+          </div>
+
+          <p
+            aria-live='polite'
+            className='mt-8 text-center text-gray-500 font-medium italic'
+          >
+            {page.caption}
+          </p>
+
+          <div className='mt-8 flex items-center justify-center gap-6'>
+            <button
+              type='button'
+              onClick={() => setPageIndex((i) => i - 1)}
+              disabled={pageIndex === 0}
+              aria-label={`Previous page of ${title}`}
+              className='cursor-pointer p-4 rounded-full bg-brand-deep text-white shadow-lg transition-all hover:-translate-x-1 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-x-0'
+            >
+              <ArrowLeft className='w-5 h-5' />
+            </button>
+            <span className='font-bold text-brand-deep tabular-nums'>
+              {pageIndex + 1} / {pages.length}
+            </span>
+            <button
+              type='button'
+              onClick={() => setPageIndex((i) => i + 1)}
+              disabled={pageIndex === pages.length - 1}
+              aria-label={`Next page of ${title}`}
+              className='cursor-pointer p-4 rounded-full bg-brand-deep text-white shadow-lg transition-all hover:translate-x-1 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-x-0'
+            >
+              <ArrowRight className='w-5 h-5' />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function MagazineDetailPage() {
   return (
     <div className='bg-background min-h-screen pt-32 pb-24'>
       {/* Breadcrumbs & Back Button */}
@@ -103,66 +191,16 @@ export default function MagazineDetailPage() {
       </section>
 
       {/* Article Content / Screenshots */}
-      <section className='max-w-[1440px] mx-auto px-6 md:px-12 mb-32'>
-        <div className='bg-gray-50 rounded-[4rem] p-12 md:p-24 border border-gray-100'>
-          <div className='max-w-4xl mx-auto mb-16 text-center'>
-            <h2 className='text-3xl md:text-4xl font-bold font-heading text-brand-deep mb-6'>
-              {'Inside the Feature'}
-            </h2>
-            <p className='text-lg text-gray-500'>
-              {
-                "A closer look at the article highlighting Obimi's mission and the impact we're making for parents and caregivers."
-              }
-            </p>
-          </div>
-
-          <div className='max-w-2xl mx-auto'>
-            <div className='relative aspect-[5/7] rounded-[2rem] overflow-hidden shadow-lg border border-gray-200 bg-white p-4'>
-              <div className='relative w-full h-full rounded-xl overflow-hidden'>
-                <Image
-                  key={page.src.src}
-                  src={page.src}
-                  alt={page.alt}
-                  fill
-                  sizes='(min-width: 768px) 672px, 100vw'
-                  className='object-contain animate-in fade-in duration-500'
-                />
-              </div>
-            </div>
-
-            <p
-              aria-live='polite'
-              className='mt-8 text-center text-gray-500 font-medium italic'
-            >
-              {page.caption}
-            </p>
-
-            <div className='mt-8 flex items-center justify-center gap-6'>
-              <button
-                type='button'
-                onClick={() => setPageIndex((i) => i - 1)}
-                disabled={pageIndex === 0}
-                aria-label='Previous page'
-                className='cursor-pointer p-4 rounded-full bg-brand-deep text-white shadow-lg transition-all hover:-translate-x-1 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-x-0'
-              >
-                <ArrowLeft className='w-5 h-5' />
-              </button>
-              <span className='font-bold text-brand-deep tabular-nums'>
-                {pageIndex + 1} / {ARTICLE_PAGES.length}
-              </span>
-              <button
-                type='button'
-                onClick={() => setPageIndex((i) => i + 1)}
-                disabled={pageIndex === ARTICLE_PAGES.length - 1}
-                aria-label='Next page'
-                className='cursor-pointer p-4 rounded-full bg-brand-deep text-white shadow-lg transition-all hover:translate-x-1 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:translate-x-0'
-              >
-                <ArrowRight className='w-5 h-5' />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ArticleViewer
+        title='Inside the Feature'
+        description="A closer look at the article highlighting Obimi's mission and the impact we're making for parents and caregivers."
+        pages={LIFE_IN_PAGES}
+      />
+      <ArticleViewer
+        title='Featured in Enable Magazine'
+        description='From founding PTAs to launching CICs, a look at how parent carers, including our founder Helen Ewumi, are advocating for their children to create real change.'
+        pages={ENABLE_PAGES}
+      />
 
       {/* Key Highlights */}
       <section className='max-w-[1440px] mx-auto px-6 md:px-12 mb-32'>
