@@ -17,16 +17,22 @@ export default function OurTeamPage() {
 
   const coreTeam = [
     {
-      name: 'Tatum Haslop',
-      role: 'Parent Support & Community Volunteer',
-      bio: 'Supporting families through guidance, resources, and community engagement.',
+      name: 'Tatum',
+      role: 'SEND Practitioner',
+      bio: 'Supporting children with SEND through guidance, inclusion, and practical support.',
       image: IMAGES.TATUM_HASLOP,
     },
     {
-      name: 'Adefiranye Oluwafunmilayo',
+      name: 'Oluwafunmilayo',
       role: 'Social Media Manager',
       bio: 'Building a network of passionate individuals dedicated to the Obimi mission.',
       image: IMAGES.FUNMI,
+    },
+    {
+      name: 'Bex',
+      role: 'Dyslexia Coach',
+      bio: 'Supporting learners with dyslexia through personalised strategies, confidence, and practical guidance.',
+      image: IMAGES.BEX,
     },
   ];
 

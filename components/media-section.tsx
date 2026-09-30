@@ -61,20 +61,46 @@ const images: {
     alt: 'Community Event 10',
     span: 'md:col-span-1 md:row-span-1',
   },
+  {
+    src: IMAGES.SOULTOWN_FAM,
+    alt: 'Helen at the FAM letters at Soultown festival',
+    span: 'md:col-span-1 md:row-span-2',
+  },
+  {
+    src: IMAGES.SOULTOWN_MURAL,
+    alt: 'Helen in front of the Soul Town mural',
+    span: 'md:col-span-2 md:row-span-1',
+  },
+  {
+    src: IMAGES.SOULTOWN_STAND,
+    alt: 'The Obimi team at our stand at Soultown festival',
+    span: 'md:col-span-1 md:row-span-1',
+  },
 ];
 
+// Thumbnails come from YouTube, so each card shows a frame of its own video.
 const videos = [
   {
     id: 'jQSAj6qpv3U',
     title: 'Obimi Founder',
-    thumbnail: IMAGES.PRIMARY_LOGO.src,
+    description: 'Hear from our founder about how Obimi is making a difference.',
   },
   {
     id: 'R5VDe2QzyDE',
     title: 'Obimi Testimonial',
-    thumbnail: IMAGES.PRIMARY_LOGO.src,
+    description:
+      'Hear from our community members about their experience with Obimi.',
+  },
+  {
+    id: 'xeee1dHSZcs',
+    title: 'Obimi on TVC News',
+    description:
+      'Why early diagnosis and intervention for autism matters, discussed on TVC Breakfast.',
   },
 ];
+
+const youtubeThumbnail = (id: string) =>
+  `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
 
 const MediaSection = () => {
   const [selectedImage, setSelectedImage] = useState<
@@ -86,18 +112,6 @@ const MediaSection = () => {
     return typeof img === 'string' ? img : img.src;
   };
 
-  const videoTitles = [
-    {
-      title: 'Obimi Founder',
-      description:
-        'Hear from our founder about how Obimi is making a difference.',
-    },
-    {
-      title: 'Obimi Testimonial',
-      description:
-        'Hear from our community members about their experience with Obimi.',
-    },
-  ];
 
   return (
     <section className='py-24 px-6 md:px-12 lg:px-24 bg-background relative overflow-hidden'>
@@ -189,14 +203,14 @@ const MediaSection = () => {
                   ) : (
                     <>
                       <img
-                        src={video.thumbnail}
+                        src={youtubeThumbnail(video.id)}
                         alt={video.title}
-                        className='w-full h-full object-contain
-                         transition-transform duration-700 group-hover:scale-105'
+                        className='w-full h-full object-cover transition-transform duration-700 group-hover:scale-105'
                       />
                       <div className='absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center'>
                         <button
                           onClick={() => setActiveVideo(video.id)}
+                          aria-label={`Play ${video.title}`}
                           className='w-16 h-16 rounded-full bg-white/90 text-primary flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform duration-300'
                         >
                           <Play className='w-6 h-6 fill-current ml-1' />
@@ -207,10 +221,10 @@ const MediaSection = () => {
                 </div>
                 <div className='px-2'>
                   <h4 className='text-xl font-heading font-bold text-foreground group-hover:text-primary transition-colors'>
-                    {videoTitles[index].title}
+                    {video.title}
                   </h4>
                   <p className='text-sm text-muted-foreground font-sans'>
-                    {videoTitles[index].description}
+                    {video.description}
                   </p>
                 </div>
               </div>

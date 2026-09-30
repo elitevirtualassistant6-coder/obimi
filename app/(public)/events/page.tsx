@@ -116,6 +116,36 @@ const COMMUNITY_GALLERIES = [
         alt: 'Gathering 16',
         title: 'Community Gathering',
       },
+      {
+        src: IMAGES.SOULTOWN_STAND.src,
+        alt: 'The Obimi team at our stand at Soultown festival',
+        title: 'Community Gathering',
+      },
+      {
+        src: IMAGES.SOULTOWN_MURAL.src,
+        alt: 'Helen in front of the Soul Town mural',
+        title: 'Community Gathering',
+      },
+      {
+        src: IMAGES.SOULTOWN_SELFIE.src,
+        alt: 'Obimi volunteers at Soultown festival',
+        title: 'Community Gathering',
+      },
+      {
+        src: IMAGES.SOULTOWN_TEAM.src,
+        alt: 'The Obimi team on the Soultown steps',
+        title: 'Community Gathering',
+      },
+      {
+        src: IMAGES.SOULTOWN_FAM.src,
+        alt: 'Helen at the FAM letters at Soultown festival',
+        title: 'Community Gathering',
+      },
+      {
+        src: IMAGES.SOULTOWN_SENSORY.src,
+        alt: 'Sensory play tray at the Obimi stand',
+        title: 'Community Gathering',
+      },
     ],
   },
 ];

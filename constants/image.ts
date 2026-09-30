@@ -4,7 +4,7 @@ import secondary_logo from '../public/assets/images/secondary-logo.png';
 
 // Teams
 
-// Parent Support & Community Volunteer
+// SEND Practitioner
 import tatum from '../public/assets/images/tatum-haslop.jpeg';
 
 // Founder & Director
@@ -13,6 +13,9 @@ import helen from '../public/assets/images/helen-ewumi.jpeg';
 
 // Social Media Manager
 import funmi from '../public/assets/images/funmi.jpeg';
+
+// Dyslexia Coach
+import bex from '../public/assets/images/bex.jpeg';
 
 // Events
 import event from '../public/assets/events/event-a.jpg';
@@ -29,6 +32,14 @@ import event11 from '../public/assets/events/event-p.jpg';
 import event12 from '../public/assets/events/event-q.jpg';
 import event13 from '../public/assets/events/event-r.jpg';
 import event14 from '../public/assets/events/event-f.jpg';
+
+// Soultown festival
+import soultownFam from '../public/assets/events/soultown-fam.jpg';
+import soultownMural from '../public/assets/events/soultown-mural.jpg';
+import soultownSelfie from '../public/assets/events/soultown-selfie.jpg';
+import soultownSensory from '../public/assets/events/soultown-sensory.jpg';
+import soultownStand from '../public/assets/events/soultown-stand.jpg';
+import soultownTeam from '../public/assets/events/soultown-team.jpg';
 import gathering5 from '../public/assets/events/gathering-5.jpg';
 import gathering6 from '../public/assets/events/gathering-6.jpg';
 import gathering7 from '../public/assets/events/gathering-7.jpg';
@@ -65,6 +76,7 @@ export const IMAGES = {
   HELEN_EWUMI: helen,
   HELEN_EWUMI_2: helen2,
   FUNMI: funmi,
+  BEX: bex,
   EVENT_A: event,
   EVENT_B: event2,
   EVENT_C: event3,
@@ -83,6 +95,12 @@ export const IMAGES = {
   EVENT_P: event11,
   EVENT_Q: event12,
   EVENT_R: event13,
+  SOULTOWN_FAM: soultownFam,
+  SOULTOWN_MURAL: soultownMural,
+  SOULTOWN_SELFIE: soultownSelfie,
+  SOULTOWN_SENSORY: soultownSensory,
+  SOULTOWN_STAND: soultownStand,
+  SOULTOWN_TEAM: soultownTeam,
   MISSION: mission,
   AWARD: award,
   MAGAZINE: magazine,
